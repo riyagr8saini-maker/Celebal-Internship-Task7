@@ -1,0 +1,13 @@
+Data Exploration & Cleaning Summary: Superstore Dataset
+
+1. Data Ingestion & Initial Exploration
+The Superstore dataset was successfully ingested into a Python environment using the Pandas library (pd.read_csv). To ensure the data was loaded accurately, initial exploratory data analysis (EDA) was conducted. Using the .head() and .tail() functions, we visually verified the structural integrity of the rows. The .shape attribute confirmed the total dimensions of the dataset, while .dtypes was used to validate that numerical columns (like Sales and Quantity) were correctly interpreted as numeric data types rather than strings, which is critical for downstream calculations.
+
+2. Data Quality & Cleaning
+Real-world data often contains inconsistencies, so a thorough cleaning phase was executed. First, the dataset was audited for missing values using .isnull().sum(). To maintain strict data integrity for future analysis, incomplete records were removed using the .dropna() method. Additionally, the .drop_duplicates() function was applied to eliminate any exact row duplications, ensuring that statistical aggregations or machine learning models built on this data would not be artificially skewed by repeated entries.
+
+3. Data Transformation & Feature Engineering
+Following the cleaning phase, specific transformations were applied to manipulate the data for targeted analysis. We utilized boolean indexing to filter the dataset, successfully isolating records exclusively within the 'Technology' category. Next, we performed feature engineering to fulfill the requirement of creating a Total_Amount column (price * quantity). Because a pure 'Unit Price' column was absent from the original Superstore data, we first reverse-engineered the unit price by dividing Sales by Quantity. We then multiplied this derived unit price by the quantity to generate the final, accurate Total_Amount column.
+
+Conclusion
+The resulting dataset is now structurally sound, free of nulls and duplicates, and enhanced with new analytical features. It was successfully exported as cleaned_superstore.csv (with the index dropped to prevent redundant numbering), making it fully prepared for integration into larger analytical dashboards or reporting tools.
